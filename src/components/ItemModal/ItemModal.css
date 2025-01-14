@@ -1,0 +1,14 @@
+.modal__image {
+  /* max-width: 498px; */
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.modal__close {
+  z-index: 999;
+}
+
+.modal__content_type_image {
+  display: block;
+}
