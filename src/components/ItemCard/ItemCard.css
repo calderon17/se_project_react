@@ -1,0 +1,17 @@
+.card {
+  width: 323px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.card__name {
+  position: absolute;
+  margin: 0;
+}
+
+.card__image {
+  width: 100%;
+  border-radius: 19px;
+  border: 1px;
+}
