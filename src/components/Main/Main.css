@@ -6,3 +6,7 @@
   list-style-type: none;
   gap: 21px;
 }
+
+.cards__text {
+  font-family: cabinet;
+}

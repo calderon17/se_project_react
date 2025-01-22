@@ -1,9 +1,11 @@
 .page {
   background-color: #f3f3f3;
+  font-family: Cabinet Grotesk, Arial, sans-serif;
+  /* max-height: 100%; */
 }
 
 .page__content {
   max-width: 1360px;
   margin: 0 auto;
-  padding: 0 20px;
+  /* padding: 0 20px; */
 }

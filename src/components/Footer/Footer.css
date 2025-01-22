@@ -1,8 +1,11 @@
 .Footer {
-  padding: 171px 0 24px 0;
-  font-family: cabinet grotesk;
+  padding: 0 0 24px;
+  font-family: Cabinet Grotesk, Arial, sans-serif;
   font-size: 16px;
   line-height: 20px;
+  font-weight: 500;
+  /* height: 100%; */
+  margin-bottom: auto;
 }
 
 .Footer__copyright {

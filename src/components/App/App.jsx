@@ -8,7 +8,11 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { use } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
-import { coordinates, APIkey } from "../../utils/constants.js";
+import {
+  coordinates,
+  APIkey,
+  defaultClothingItems,
+} from "../../utils/constants.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -18,6 +22,7 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [SelectedCard, setSelectedCard] = useState({});
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -32,20 +37,32 @@ function App() {
     setActiveModal("");
   };
 
+  const handleClothingItemSubmit = () => {};
+
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
+        data.weather[0].main = "Clear";
+
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
       .catch(console.error);
   }, []);
 
+  useEffect(() => {
+    setClothingItems(defaultClothingItems);
+  }, []);
+
   return (
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={handleAddClick} weatherData={weatherData} />
-        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
+        <Main
+          weatherData={weatherData}
+          handleCardClick={handleCardClick}
+          clothingItems={clothingItems}
+        />
         <Footer />
       </div>
       <ModalWithForm
@@ -74,17 +91,23 @@ function App() {
         </label>
         <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select weather type</legend>
-          <label htmlFor="hot" className="modal__labe modal__label_type_radio">
+          <label htmlFor="hot" className="modal__label modal__label_type_radio">
             <input id="hot" type="radio" className="modal__radio-input" />
-            hot
+            Hot
           </label>
-          <label htmlFor="warm" className="modal__labe modal__label_type_radio">
+          <label
+            htmlFor="warm"
+            className="modal__label modal__label_type_radio"
+          >
             <input id="warm" type="radio" className="modal__radio-input" />
-            warm
+            Warm
           </label>
-          <label htmlFor="cold" className="modal__labe modal__label_type_radio">
+          <label
+            htmlFor="cold"
+            className="modal__label modal__label_type_radio"
+          >
             <input id="cold" type="radio" className="modal__radio-input" />
-            cold
+            Cold
           </label>
         </fieldset>
       </ModalWithForm>
