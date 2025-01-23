@@ -1,5 +1,5 @@
 import "./ModalWithForm.css";
-import close from "../../Images/closeGarment.png";
+import close from "../../images/closeGarment.png";
 
 function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
   return (
