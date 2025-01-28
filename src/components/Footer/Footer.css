@@ -1,4 +1,4 @@
-.Footer {
+.footer {
   padding: 0 0 24px;
   font-family: Cabinet Grotesk, Arial, sans-serif;
   font-size: 16px;
@@ -9,12 +9,12 @@
   /* position: relative; */
 }
 
-.Footer__copyright {
+.footer__copyright {
   margin: 0;
   position: absolute;
 }
 
-.Footer__year {
+.footer__year {
   text-align: right;
   margin: 0;
 }

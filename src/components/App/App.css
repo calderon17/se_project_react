@@ -1,4 +1,4 @@
-.body {
+/* .body {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -6,7 +6,7 @@
 
 html {
   min-height: 100%;
-}
+} */
 
 .page {
   background-color: #f3f3f3;
@@ -17,5 +17,6 @@ html {
 .page__content {
   max-width: 1360px;
   margin: 0 auto;
-  /* padding: 0 20px; */
+  min-height: 100vh;
+  padding: 0 40px;
 }
