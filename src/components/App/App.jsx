@@ -18,8 +18,10 @@ import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit
 function App() {
   const [weatherData, setWeatherData] = useState({
     type: "",
-    temp: { F: 999 /*, C: 999 */ },
+    temp: { F: 999, C: 999 },
     city: "",
+    condition: "",
+    // isDay: False,
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
@@ -48,7 +50,7 @@ function App() {
   useEffect(() => {
     getWeather(coordinates, APIkey)
       .then((data) => {
-        data.weather[0].main = "Clear";
+        // data.weather[0].main = "Clear";
 
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);

@@ -1,31 +1,43 @@
 import "./Main.css";
 import WeatherCard from "../WeatherCard/WeatherCard";
 // import { defaultClothingItems } from "../../utils/constants";
+import { useContext } from "react";
 
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import ItemCard from "../ItemCard/ItemCard";
 
 function Main({ weatherData, handleCardClick, clothingItems }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+
   return (
     <main>
       <WeatherCard weatherData={weatherData} />
       <section className="cards">
         <p className="cards__text">
-          Today is {Math.round(weatherData.temp.F)}° F / You may want to wear:
+          Today is {weatherData.temp[currentTemperatureUnit]}°
+          {currentTemperatureUnit} / You may want to wear:
         </p>
+        {/* <ul className="cards__list">
+          {clothingItems
+            .filter((item) => item.weather === weatherData.type)
+            .map((item) => (
+              <ItemCard
+                key={item.id}
+                item={item}
+                onCardClick={handleCardClick}
+              />
+            ))}
+        </ul> */}
         <ul className="cards__list">
           {clothingItems
-            .filter((item) => {
-              return item.weather === weatherData.type;
-            })
-            .map((item) => {
-              return (
-                <ItemCard
-                  key={item._id}
-                  item={item}
-                  onCardClick={handleCardClick}
-                />
-              );
-            })}
+            .filter((item) => item.weather === weatherData.type)
+            .map((item) => (
+              <ItemCard
+                key={item.id} // Ensure this is unique
+                item={item}
+                onCardClick={handleCardClick}
+              />
+            ))}
         </ul>
       </section>
     </main>
