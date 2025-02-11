@@ -23,13 +23,15 @@ export default function AddItemModal({
   };
 
   const handleSubmit = (e) => {
-    e.preventDefualt();
+    // debugger;
+    e.preventDefault();
     onAddItemModalSubmit({ name, imageUrl, weather });
-    debugger;
     setName();
     setImageUrl();
     setWeather();
   };
+
+  //manuel
 
   return (
     <ModalWithForm
