@@ -17,23 +17,13 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
           Today is {weatherData.temp[currentTemperatureUnit]}°
           {currentTemperatureUnit} / You may want to wear:
         </p>
-        {/* <ul className="cards__list">
-          {clothingItems
-            .filter((item) => item.weather === weatherData.type)
-            .map((item) => (
-              <ItemCard
-                key={item.id}
-                item={item}
-                onCardClick={handleCardClick}
-              />
-            ))}
-        </ul> */}
+
         <ul className="cards__list">
           {clothingItems
             .filter((item) => item.weather === weatherData.type)
             .map((item) => (
               <ItemCard
-                key={item.id} // Ensure this is unique
+                key={item._id} // Ensure this is unique
                 item={item}
                 onCardClick={handleCardClick}
               />
@@ -45,3 +35,17 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
 }
 
 export default Main;
+
+{
+  /* <ul className="cards__list">
+          {clothingItems
+            .filter((item) => item.weather === weatherData.type)
+            .map((item) => (
+              <ItemCard
+                key={item.id}
+                item={item}
+                onCardClick={handleCardClick}
+              />
+            ))}
+        </ul> */
+}

@@ -4,7 +4,6 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { use } from "react";
 import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
@@ -14,6 +13,7 @@ import {
   defaultClothingItems,
 } from "../../utils/constants.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
+import AddItemModal from "../AddItemModal/AddItemModal.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -23,9 +23,12 @@ function App() {
     condition: "",
     // isDay: False,
   });
+
+  // const is weatherloaded
+  // ^ extra work to have loadded text when refreshing
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState([]);
+  const [clothingItems, setClothingItems] = useState([defaultClothingItems]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
   const handleToggleswitchChange = () => {
@@ -47,7 +50,13 @@ function App() {
     setActiveModal("");
   };
 
+  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+    setClothingItems([{ name, link: imageUrl, weather }, ...clothingItems]);
+    closeActiveModal();
+    debugger;
+  };
   useEffect(() => {
+    setClothingItems(defaultClothingItems);
     getWeather(coordinates, APIkey)
       .then((data) => {
         // data.weather[0].main = "Clear";
@@ -56,10 +65,6 @@ function App() {
         setWeatherData(filteredData);
       })
       .catch(console.error);
-  }, []);
-
-  useEffect(() => {
-    setClothingItems(defaultClothingItems);
   }, []);
 
   return (
@@ -76,76 +81,16 @@ function App() {
           />
           <Footer />
         </div>
-        <ModalWithForm
-          title="New garmet"
-          buttonText="Add garment"
-          activeModal={activeModal}
+        <AddItemModal
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
-        >
-          <label htmlFor="name" className="modal__label">
-            Name{" "}
-            <input
-              type="text"
-              className="modal__input"
-              id="name"
-              placeholder="Name"
-            />
-          </label>
-          <label htmlFor="imageUrl" className="modal__label">
-            Image{" "}
-            <input
-              type="url"
-              className="modal__input"
-              id="imageUrl"
-              placeholder="Image URL"
-            />
-          </label>
-          <fieldset className="modal__radio-buttons">
-            <legend className="modal__legend">Select weather type</legend>
-            <label
-              htmlFor="hot"
-              className="modal__label modal__label_type_radio"
-            >
-              <input
-                id="hot"
-                type="radio"
-                className="modal__radio-input"
-                name="weather"
-              />
-              Hot
-            </label>
-            <label
-              htmlFor="warm"
-              className="modal__label modal__label_type_radio"
-            >
-              <input
-                id="warm"
-                type="radio"
-                className="modal__radio-input"
-                name="weather"
-              />
-              Warm
-            </label>
-            <label
-              htmlFor="cold"
-              className="modal__label modal__label_type_radio"
-            >
-              <input
-                id="cold"
-                type="radio"
-                className="modal__radio-input"
-                name="weather"
-              />
-              Cold
-            </label>
-          </fieldset>
-        </ModalWithForm>
+        />
         <ItemModal
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
+          onAddItemModalSubmit={handleAddItemModalSubmit}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
