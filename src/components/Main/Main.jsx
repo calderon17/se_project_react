@@ -35,17 +35,3 @@ function Main({ weatherData, handleCardClick, clothingItems }) {
 }
 
 export default Main;
-
-{
-  /* <ul className="cards__list">
-          {clothingItems
-            .filter((item) => item.weather === weatherData.type)
-            .map((item) => (
-              <ItemCard
-                key={item.id}
-                item={item}
-                onCardClick={handleCardClick}
-              />
-            ))}
-        </ul> */
-}

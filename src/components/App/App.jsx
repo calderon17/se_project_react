@@ -7,6 +7,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import { use } from "react";
 import ItemModal from "../ItemModal/ItemModal";
+import Profile from "../Profile/Profile.jsx";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi.js";
 import {
   coordinates,
@@ -88,7 +89,10 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<p>profile</p>} />
+            <Route
+              path="/profile"
+              element={<Profile onCardClick={handleCardClick} />}
+            />
           </Routes>
 
           <Footer />
