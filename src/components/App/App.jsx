@@ -16,7 +16,7 @@ import {
 } from "../../utils/constants.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
-// import { Routes, Route } from "react-router-dom";
+import { getItems, handleDeleteCard } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -33,6 +33,7 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [clothingItems, setClothingItems] = useState([defaultClothingItems]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [cards, setCards] = useState([]);
 
   const handleToggleswitchChange = () => {
     currentTemperatureUnit === "F"
@@ -59,6 +60,23 @@ function App() {
     closeActiveModal();
   };
 
+  const handleDeleteClick = (cardId) => {
+    handleDeleteCard(cardId)
+      .then(() => {
+        setClothingItems((prevItems) =>
+          prevItems.filter((item) => item.id !== cardId)
+        );
+        closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  // useEffect(() => {
+  //   APIkey.getCards().then((fetchedCards) => {
+  //     setCards(fetchedCards);
+  //   });
+  // }, []);
+
   useEffect(() => {
     setClothingItems(defaultClothingItems);
     getWeather(coordinates, APIkey)
@@ -67,6 +85,14 @@ function App() {
 
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
+      })
+      .catch(console.error);
+  }, []);
+
+  useEffect(() => {
+    getItems()
+      .then((data) => {
+        console.log(data);
       })
       .catch(console.error);
   }, []);
@@ -108,6 +134,7 @@ function App() {
           onClose={closeActiveModal}
           isOpen={activeModal === "add-garment"}
           onAddItemModalSubmit={handleAddItemModalSubmit}
+          onDelete={handleDeleteClick}
         />
       </div>
     </CurrentTemperatureUnitContext.Provider>
