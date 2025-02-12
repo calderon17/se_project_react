@@ -56,7 +56,7 @@ function App() {
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
     const newItem = { name, link: imageUrl, weather };
-    setClothingItems((prevItems) => [newItem, ...prevItems]);
+    setClothingItems((prevItems) => [newItem, ...prevItems]); // opposite of this
     closeActiveModal();
   };
 
@@ -78,7 +78,6 @@ function App() {
   // }, []);
 
   useEffect(() => {
-    setClothingItems(defaultClothingItems);
     getWeather(coordinates, APIkey)
       .then((data) => {
         // data.weather[0].main = "Clear";
@@ -92,6 +91,7 @@ function App() {
   useEffect(() => {
     getItems()
       .then((data) => {
+        setClothingItems(data);
         console.log(data);
       })
       .catch(console.error);
@@ -117,7 +117,12 @@ function App() {
             />
             <Route
               path="/profile"
-              element={<Profile onCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  onCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                />
+              }
             />
           </Routes>
 

@@ -6,8 +6,8 @@ function getItems() {
   });
 }
 
-function handleDeleteCard(cardId) {
-  return fetch(`${this.baseUrl}/cards/${cardId}`, {
+function handleDeleteCard(id) {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
   }).then((res) => checkResponse(res));
 }
