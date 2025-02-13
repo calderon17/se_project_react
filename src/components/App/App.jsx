@@ -54,11 +54,11 @@ function App() {
     setActiveModal("");
   };
 
-  const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
+  const handleAddItemModalSubmit = (name, imageUrl, weather) => {
     // const newItem = { name, link: imageUrl, weather };
     // setClothingItems((prevItems) => [newItem, ...prevItems]);
-
-    addItem({ name, imageUrl, weather })
+    // console.log(name, imageUrl, weather);
+    addItem(name, imageUrl, weather)
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
@@ -100,7 +100,7 @@ function App() {
     getItems()
       .then((data) => {
         setClothingItems(data);
-        console.log(data);
+        // console.log(data);
       })
       .catch(console.error);
   }, []);

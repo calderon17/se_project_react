@@ -12,11 +12,11 @@ function handleDeleteCard(id) {
   }).then((res) => checkResponse(res));
 }
 
-function addItem({ name, imageUrl, weather }) {
+function addItem(name, imageUrl, weather) {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
-      "content-Type": "appliction/json",
+      "content-Type": "application/json",
     },
     body: JSON.stringify({
       name: name,

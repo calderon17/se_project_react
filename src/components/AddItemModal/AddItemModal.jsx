@@ -25,10 +25,10 @@ export default function AddItemModal({
   const handleSubmit = (e) => {
     // debugger;
     e.preventDefault();
-    onAddItemModalSubmit({ name, imageUrl, weather });
-    setName();
-    setImageUrl();
-    setWeather();
+    onAddItemModalSubmit(name, imageUrl, weather);
+    setName("");
+    setImageUrl("");
+    setWeather("");
   };
 
   //manuel
