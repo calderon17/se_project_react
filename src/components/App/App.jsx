@@ -16,7 +16,7 @@ import {
 } from "../../utils/constants.js";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext.jsx";
 import AddItemModal from "../AddItemModal/AddItemModal.jsx";
-import { getItems, handleDeleteCard } from "../../utils/api.js";
+import { getItems, handleDeleteCard, addItem } from "../../utils/api.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -31,7 +31,7 @@ function App() {
   // ^ extra work to have loadded text when refreshing
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
-  const [clothingItems, setClothingItems] = useState([defaultClothingItems]);
+  const [clothingItems, setClothingItems] = useState([]);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [cards, setCards] = useState([]);
 
@@ -55,21 +55,29 @@ function App() {
   };
 
   const handleAddItemModalSubmit = ({ name, imageUrl, weather }) => {
-    const newItem = { name, link: imageUrl, weather };
-    setClothingItems((prevItems) => [newItem, ...prevItems]); // opposite of this
-    closeActiveModal();
+    // const newItem = { name, link: imageUrl, weather };
+    // setClothingItems((prevItems) => [newItem, ...prevItems]);
+
+    addItem({ name, imageUrl, weather })
+      .then((newItem) => {
+        setClothingItems((prevItems) => [newItem, ...prevItems]);
+        closeActiveModal();
+      })
+      .catch(console.error);
   };
 
   const handleDeleteClick = (cardId) => {
     handleDeleteCard(cardId)
       .then(() => {
         setClothingItems((prevItems) =>
-          prevItems.filter((item) => item.id !== cardId)
+          prevItems.filter((item) => item._id !== cardId)
         );
         closeActiveModal();
       })
       .catch(console.error);
   };
+
+  // this is the last message
 
   // useEffect(() => {
   //   APIkey.getCards().then((fetchedCards) => {

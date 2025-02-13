@@ -12,6 +12,20 @@ function handleDeleteCard(id) {
   }).then((res) => checkResponse(res));
 }
 
+function addItem({ name, imageUrl, weather }) {
+  return fetch(`${baseUrl}/items`, {
+    method: "POST",
+    headers: {
+      "content-Type": "appliction/json",
+    },
+    body: JSON.stringify({
+      name: name,
+      imageUrl: imageUrl,
+      weather: weather,
+    }),
+  }).then((res) => checkResponse(res));
+}
+
 function checkResponse(res) {
   if (res.ok) {
     return res.json();
@@ -19,4 +33,4 @@ function checkResponse(res) {
   return Promise.reject(`Error: ${res.status}`);
 }
 
-export { getItems, handleDeleteCard };
+export { getItems, handleDeleteCard, addItem };
