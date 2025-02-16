@@ -58,7 +58,7 @@ function App() {
     // const newItem = { name, link: imageUrl, weather };
     // setClothingItems((prevItems) => [newItem, ...prevItems]);
     // console.log(name, imageUrl, weather);
-    addItem(name, imageUrl, weather)
+    return addItem(name, imageUrl, weather)
       .then((newItem) => {
         setClothingItems((prevItems) => [newItem, ...prevItems]);
         closeActiveModal();
@@ -120,6 +120,7 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -129,6 +130,7 @@ function App() {
                 <Profile
                   onCardClick={handleCardClick}
                   clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                 />
               }
             />
@@ -145,7 +147,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          isOpen={activeModal === "add-garment"}
+          isOpen={activeModal === "preview"}
           onAddItemModalSubmit={handleAddItemModalSubmit}
           onDelete={handleDeleteClick}
         />

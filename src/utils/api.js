@@ -33,4 +33,4 @@ function checkResponse(res) {
   return Promise.reject(`Error: ${res.status}`);
 }
 
-export { getItems, handleDeleteCard, addItem };
+export { getItems, handleDeleteCard, addItem, checkResponse };
