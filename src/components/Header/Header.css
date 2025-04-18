@@ -1,0 +1,72 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 32px 0 40px;
+  /* font-weight: bold; */
+  height: 25px;
+  size: 20px;
+  font-size: 20px;
+}
+
+.header__logo {
+  margin-right: 24px;
+}
+
+.header__date-and-location {
+  margin: 0;
+  font-weight: 700;
+}
+
+.header__add-clothes-btn {
+  margin: 0 20px 0 20px;
+  border: none;
+  padding: 0;
+  font-weight: 700;
+}
+
+.header__user-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+}
+
+.header__username {
+  margin: 0;
+}
+
+.header__link {
+  text-decoration: none;
+  color: black;
+}
+
+.header__right {
+  display: flex;
+  margin-left: auto;
+}
+
+.header__avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.header__auth-buttons {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.header__button {
+  margin: auto 20px auto 20px;
+  border: none;
+  padding: 0;
+  font-weight: 700;
+  width: 67px;
+  height: 24px;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+  align-items: center;
+  display: flex;
+}
