@@ -19,3 +19,12 @@
   cursor: pointer;
   font-size: 14px; /* Adjust this value based on your design */
 }
+
+.profile__update-data {
+  margin: 0 auto 0 0; /* Adds some space after the username */
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}

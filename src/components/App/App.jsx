@@ -193,6 +193,10 @@ function App() {
           .catch((err) => console.log(err));
   };
 
+  const handleUpdate = (userData) => {
+    setCurrentUser(userData);
+  };
+
   const handleSignOut = () => {
     // Remove token from localStorage
     localStorage.removeItem("jwt");
@@ -216,6 +220,7 @@ function App() {
           isLoggedIn,
           setIsLoggedIn,
           isLoading,
+          handleUpdate,
         }}
       >
         <div className="page">

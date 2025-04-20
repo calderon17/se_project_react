@@ -20,9 +20,9 @@ function Header({
 
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
-  const handleEditProfileClick = () => {
-    setIsEditProfileModalOpen(true);
-  };
+  // const handleEditProfileClick = () => {
+  //   setIsEditProfileModalOpen(true);
+  // };
 
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
@@ -59,12 +59,12 @@ function Header({
               <button className="header__button" onClick={handleLogout}>
                 Log out
               </button>
-              <button
+              {/* <button
                 className="header__button"
                 onClick={handleEditProfileClick}
               >
                 Change Profile Data
-              </button>
+              </button> */}
               <Link to="/profile" className="header__link">
                 <div className="header__user-container">
                   <p className="header__username">{currentUser.name}</p>
@@ -102,10 +102,10 @@ function Header({
         isOpen={isLoginModalOpen}
         onClose={() => setIsLoginModalOpen(false)}
       /> */}
-      <EditProfileModal
+      {/* <EditProfileModal
         isOpen={isEditProfileModalOpen}
         onClose={() => setIsEditProfileModalOpen(false)}
-      />
+      /> */}
     </>
   );
 }

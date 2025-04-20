@@ -40,6 +40,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
     const token = getToken();
     updateProfile(name, avatar, token)
       .then((data) => {
+        console.log(data);
         handleUpdate(data);
         onClose();
         setName("");
@@ -47,6 +48,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
       })
       .catch((err) => {
         setErrorMessage("Invalid name or avatar. Please try again.");
+        console.log(err);
       });
   };
 
