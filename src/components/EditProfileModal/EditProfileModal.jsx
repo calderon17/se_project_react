@@ -72,7 +72,9 @@ export default function EditProfileModal({ onClose, isOpen }) {
       onSubmit={handleSubmit}
       onClose={onClose}
     >
-      {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
+      {errorMessage && (
+        <div className="modal__error-message">{errorMessage}</div>
+      )}
       <label htmlFor="name" className="modal__label">
         Name{" "}
         <input

@@ -4,6 +4,18 @@
 
 .profile__sidebar {
   display: flex;
+  flex-direction: column; /* This will stack elements vertically */
+  /* align-items: center; This centers items horizontally */
   width: 229px;
-  height: 56px;
+  height: auto; /* Change from fixed height to auto */
+  gap: 16px; /* Adds space between elements */
+}
+
+.profile__sign-out {
+  margin: 0 auto 0 0; /* Adds some space after the username */
+  padding: 0px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px; /* Adjust this value based on your design */
 }

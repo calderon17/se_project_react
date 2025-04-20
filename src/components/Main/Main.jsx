@@ -31,7 +31,7 @@ function Main({
                 key={item._id} // Ensure this is unique
                 item={item}
                 onCardClick={handleCardClick}
-                onLikeClick={handleLikeClick}
+                onCardLike={handleLikeClick}
               />
             ))}
         </ul>

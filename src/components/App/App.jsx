@@ -57,6 +57,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const navigate = useNavigate();
+
   const handleToggleswitchChange = () => {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
@@ -134,6 +136,7 @@ function App() {
       })
       .catch(console.error);
   };
+
   // this is the last message
 
   useEffect(() => {
@@ -174,22 +177,32 @@ function App() {
     const token = getToken();
     // Check if this card is not currently liked
     !isLiked
-      ? api
-          .addCardLike(id, token)
+      ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((err) => console.log(err))
-      : api
-          .removeCardLike(id, token)
+      : removeCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((item) => (item._id === id ? updatedCard : item))
+              cards.map((item) => (item._id === id ? updatedCard.data : item))
             );
           })
           .catch((err) => console.log(err));
+  };
+
+  const handleSignOut = () => {
+    // Remove token from localStorage
+    localStorage.removeItem("jwt");
+
+    // Update logged in status
+    setIsLoggedIn(false);
+
+    // Optional: Clear current user data
+    setCurrentUser(null);
+    navigate("/");
   };
 
   return (
@@ -233,6 +246,7 @@ function App() {
                       onCardClick={handleCardClick}
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
+                      handleSignOut={handleSignOut}
                     />
                   </ProtectedRoute>
                 }

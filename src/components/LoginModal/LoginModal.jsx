@@ -38,7 +38,9 @@ export default function LoginModal({ onClose, isOpen, onLogin }) {
       isOpen={isOpen}
       onSubmit={handleSubmit}
     >
-      {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
+      {errorMessage && (
+        <div className="modal__error-message">{errorMessage}</div>
+      )}
       <label htmlFor="email" className="modal__label">
         Email{" "}
         <input
