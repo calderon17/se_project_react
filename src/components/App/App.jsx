@@ -83,7 +83,6 @@ function App() {
     return addItem(name, imageUrl, weather, token)
       .then((newItem) => {
         if (newItem) {
-          // console.log(newItem);
           // Only update state if we got a valid response
           setClothingItems((prevItems) => [newItem.data, ...prevItems]);
         }
