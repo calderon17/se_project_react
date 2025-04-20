@@ -8,6 +8,7 @@ import { useContext, useState } from "react";
 
 function Profile({
   onCardClick,
+  onCardLike,
   clothingItems,
   handleAddClick,
   handleSignOut,
@@ -42,6 +43,7 @@ function Profile({
       <section className="profile__clothing-items">
         <ClothesSection
           onCardClick={onCardClick}
+          onCardLike={onCardLike}
           clothingItems={clothingItems}
           handleAddClick={handleAddClick}
         />

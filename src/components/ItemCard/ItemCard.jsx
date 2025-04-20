@@ -5,7 +5,7 @@ import likeButton from "..//..//images/likebutton.svg";
 import likeButtonActive from "..//..//images/likebuttonactive.svg";
 
 function ItemCard({ item, onCardClick, onCardLike }) {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   const isLiked = item.likes.some((id) => id === currentUser._id);
 

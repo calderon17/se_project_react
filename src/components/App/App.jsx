@@ -92,17 +92,17 @@ function App() {
       .catch(console.error);
   };
 
-  const handleDeleteClick = (cardId) => {
-    handleDeleteCard(cardId)
+  const handleDeleteClick = (id) => {
+    const token = localStorage.getItem("jwt"); // Get the token
+    handleDeleteCard(id, token) // Use 'id' as that's what the API function expects
       .then(() => {
-        setClothingItems((prevItems) =>
-          prevItems.filter((item) => item._id !== cardId)
-        );
+        setClothingItems((cards) => cards.filter((card) => card._id !== id));
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error(error);
+      });
   };
-
   const handleRegister = ({ email, password, name, avatar }) => {
     return register({ email, password, name, avatar })
       .then((res) => {
@@ -252,6 +252,7 @@ function App() {
                       clothingItems={clothingItems}
                       handleAddClick={handleAddClick}
                       handleSignOut={handleSignOut}
+                      onCardLike={handleLikeClick}
                     />
                   </ProtectedRoute>
                 }
