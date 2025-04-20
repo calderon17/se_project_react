@@ -176,7 +176,7 @@ function App() {
   const handleLikeClick = ({ id, isLiked }) => {
     const token = getToken();
     // Check if this card is not currently liked
-    !isLiked
+    return !isLiked
       ? addCardLike(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
