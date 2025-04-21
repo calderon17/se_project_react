@@ -27,10 +27,10 @@
   border-radius: 4px;
   font-size: 16px;
   padding: 2px 8px;
-  opacity: 0.6;
   margin: 0 10px 0 auto; /* center in flex */
   border-radius: 4px;
   padding: 0;
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .card__like-button {

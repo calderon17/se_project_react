@@ -22,7 +22,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
       <div className="card__header">
         <h2 className="card__name">{item.name}</h2>
 
-        {currentUser && (
+        {
           <button
             className={`card__like-button ${
               isLiked ? "card__like-button_active" : ""
@@ -36,7 +36,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
               className="card__like-button-img"
             />
           </button>
-        )}
+        }
       </div>
       <img
         onClick={handleCardClick}

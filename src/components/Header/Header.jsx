@@ -5,32 +5,21 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
-// import RegisterModal from "../RegisterModal/RegisterModal";
-// import LoginModal from "../LoginModal/LoginModal";
 
 function Header({
   handleAddClick,
   weatherData,
-  // onSignUp,
-  // onSignIn,
+
   setActiveModal,
 }) {
   const { currentUser, handleLogout } = useContext(CurrentUserContext);
 
   const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
-  // const handleEditProfileClick = () => {
-  //   setIsEditProfileModalOpen(true);
-  // };
-
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-
-  // const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
-  // const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   return (
     <>
@@ -56,15 +45,7 @@ function Header({
               >
                 + Add clothes
               </button>
-              <button className="header__button" onClick={handleLogout}>
-                Log out
-              </button>
-              {/* <button
-                className="header__button"
-                onClick={handleEditProfileClick}
-              >
-                Change Profile Data
-              </button> */}
+
               <Link to="/profile" className="header__link">
                 <div className="header__user-container">
                   <p className="header__username">{currentUser.name}</p>

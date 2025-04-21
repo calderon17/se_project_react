@@ -1,6 +1,6 @@
 import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function RegisterModal({ onClose, isOpen, onRegister }) {
   // State for form fields
@@ -9,6 +9,16 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
   const [name, setName] = useState("");
   const [avatar, setAvatar] = useState(""); // Optional field
   const [errorMessage, setErrorMessage] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    setIsFormValid(
+      email.length > 0 &&
+        password.length > 0 &&
+        name.length > 0 &&
+        email.includes("@") // basic email validation
+    );
+  }, [email, password, name]);
 
   // Handle input changes
   const handleEmailChange = (e) => {
@@ -51,6 +61,7 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      isFormValid={isFormValid}
     >
       {errorMessage && (
         <div className="modal__error-message">{errorMessage}</div>

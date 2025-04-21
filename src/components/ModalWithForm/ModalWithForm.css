@@ -94,8 +94,15 @@
   border: none;
   border-radius: 4px;
   background-color: #000000;
+  transition: background-color 0.3s ease;
   opacity: 30%;
   width: 124px;
   height: 36px;
   margin: 32px 0 0;
+}
+
+.modal__submit.modal__submit_filled {
+  opacity: 1;
+  background-color: #000000;
+  color: white;
 }

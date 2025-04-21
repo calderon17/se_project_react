@@ -1,6 +1,7 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { use, useState } from "react";
+import { useEffect } from "react";
 
 export default function AddItemModal({
   onClose,
@@ -10,6 +11,13 @@ export default function AddItemModal({
   const [name, setName] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    setIsFormValid(
+      name.length > 0 && imageUrl.length > 0 && weatherType.length > 0
+    );
+  }, [name, imageUrl, weather]);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -46,6 +54,7 @@ export default function AddItemModal({
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      isFormValid={isFormValid}
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}
