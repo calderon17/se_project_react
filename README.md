@@ -10,7 +10,11 @@ The idea of the application is pretty simple - we make a call to an API, which t
 
 ## link to backend repo
 
-https://github.com/calderon17/se_project_express.git
+https://github.com/calderon17/se_project_express
+
+## link to Local API URL
+
+http://localhost:3001
 
 ## Key Features
 
