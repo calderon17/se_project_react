@@ -12,9 +12,11 @@ function Header({
 
   setActiveModal,
 }) {
-  const { currentUser, handleLogout } = useContext(CurrentUserContext);
+  // const { currentUser /*handleLogout*/ } = useContext(CurrentUserContext);
 
-  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
+
+  // const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
