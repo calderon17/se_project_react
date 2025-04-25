@@ -12,9 +12,9 @@ function Header({
 
   setActiveModal,
 }) {
-  // const { currentUser /*handleLogout*/ } = useContext(CurrentUserContext);
+  const { currentUser /*handleLogout*/ } = useContext(CurrentUserContext);
 
-  const currentUser = useContext(CurrentUserContext);
+  // const currentUser = useContext(CurrentUserContext);
 
   // const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
 

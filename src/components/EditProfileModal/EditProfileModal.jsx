@@ -32,9 +32,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateImageURL(avatar)) {
-      setErrorMessage(
-        "Please enter a valid image URL (.jpg, .jpeg, .png, .gif, .bmp)"
-      );
+      setErrorMessage("Please enter a valid image URL");
       return;
     }
     const token = getToken();
@@ -57,10 +55,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
 
     try {
       new URL(url);
-      const imageExtensions = [".jpg", ".jpeg", ".png", ".gif", ".bmp"];
-      return imageExtensions.some((extension) =>
-        url.toLowerCase().endsWith(extension)
-      );
+      return true;
     } catch (error) {
       return false;
     }
