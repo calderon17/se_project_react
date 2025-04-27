@@ -56,6 +56,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [loginError, setLoginError] = useState(""); // Add this at the top with other states
 
   const navigate = useNavigate();
 
@@ -133,7 +134,10 @@ function App() {
         setCurrentUser(userData);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch((err) => {
+        setLoginError("Incorrect email or password");
+        throw new Error("Incorrect email or password");
+      });
   };
 
   const handleSwitchModal = () => {
@@ -292,6 +296,7 @@ function App() {
             onClose={closeActiveModal}
             onLogin={handleLogin}
             onSwitchModal={handleSwitchModal}
+            errorMessage={loginError}
           />
         </div>
       </CurrentUserContext.Provider>

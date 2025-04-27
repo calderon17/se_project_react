@@ -1,3 +1,9 @@
+.modal__content_type_editprofile {
+  height: 100%;
+  max-height: 304px;
+  padding: 28px 28px 36px;
+}
+
 .modal__error-message {
   color: red;
 }

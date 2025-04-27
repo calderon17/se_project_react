@@ -137,28 +137,16 @@
   overflow: hidden;
 }
 
-.modal__content_type_login {
-  height: 100%;
-  max-height: 304px; /* smaller height for login */
-  padding: 28px 28px 36px;
+.modal__input_type_error {
+  border: 1px solid #ff4d4f;
 }
 
-.modal__content_type_signup {
-  height: 100%;
-  max-height: 456px; /* larger height for signup */
-  padding: 28px 28px 36px;
-}
-
-.modal__content_type_editprofile {
-  height: 100%;
-  max-height: 304px; /* larger height for signup */
-  padding: 28px 28px 36px;
-}
-
-.modal__content_type_additem {
-  height: 100%;
-  max-height: 436px; /* larger height for signup */
-  padding: 28px 28px 36px;
+.modal__error {
+  color: #ff4d4f;
+  font-size: 11px;
+  line-height: 13.31px;
+  margin-top: 4px;
+  display: block;
 }
 
 .modal__submit.modal__submit_filled {

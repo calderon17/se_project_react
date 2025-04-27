@@ -64,7 +64,7 @@ export default function LoginModal({
       {errorMessage && (
         <div className="modal__error-message">{errorMessage}</div>
       )}
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="email" className="modal__label modal__label-email">
         Email{" "}
         <input
           type="email"
@@ -77,12 +77,14 @@ export default function LoginModal({
           value={email}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="password" className="modal__label modal__label-password">
         Password{" "}
         <input
           type="password"
           name="password"
-          className="modal__input"
+          className={`modal__input ${
+            errorMessage ? "modal__input_type_error" : ""
+          }`}
           id="login-password"
           placeholder="password"
           autoComplete="username"
