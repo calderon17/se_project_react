@@ -7,23 +7,33 @@ import likeButtonActive from "..//..//images/likebuttonactive.svg";
 function ItemCard({ item, onCardClick, onCardLike }) {
   const { currentUser } = useContext(CurrentUserContext);
 
-  console.log(item);
-  const isLiked = item.likes.some((id) => id === currentUser?._id);
+  const isLiked = item.likes?.some((id) => id === currentUser?._id);
 
   const handleCardClick = () => {
     onCardClick(item);
   };
 
   const handleLikeClick = () => {
+    if (!currentUser) {
+      return;
+    }
     onCardLike({ id: item._id, isLiked: isLiked });
   };
+
+  // const handleLikeClick = () => {
+  //   onCardLike({ id: item._id, isLiked: isLiked });
+  // };
 
   return (
     <li className="card">
       <div className="card__header">
-        <h2 className="card__name">{item.name}</h2>
+        <h2
+          className={`card__name ${!currentUser ? "card__name_centered" : ""}`}
+        >
+          {item.name}
+        </h2>
 
-        {
+        {currentUser && (
           <button
             className={`card__like-button ${
               isLiked ? "card__like-button_active" : ""
@@ -37,7 +47,7 @@ function ItemCard({ item, onCardClick, onCardLike }) {
               className="card__like-button-img"
             />
           </button>
-        }
+        )}
       </div>
       <img
         onClick={handleCardClick}

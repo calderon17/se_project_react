@@ -28,6 +28,7 @@
   background-color: transparent;
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 
 .modal__content {
@@ -41,17 +42,17 @@
   border: 1px;
 }
 
-.modal__content_type_add-garment {
+/* .modal__content_type_add-garment {
   height: 100%;
   max-height: 436px;
   padding: 28px 28px 36px;
-}
+} */
 
 .modal__form {
   display: flex;
   flex-direction: column;
-  max-height: 436px;
-  height: 100%;
+  /* max-height: 436px;
+  height: 100%; */
 }
 
 .modal__label {
@@ -90,6 +91,7 @@
 }
 
 .modal__submit {
+  font-weight: 700;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -98,7 +100,65 @@
   opacity: 30%;
   width: 124px;
   height: 36px;
-  margin: 32px 0 0;
+  margin: 8px 0 0;
+  cursor: pointer;
+}
+
+.modal__submit-switch {
+  font-weight: 700;
+  color: rgb(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+  width: 124px;
+  height: 36px;
+  cursor: pointer;
+  margin: 8px 0 0;
+}
+
+.modal__button-container {
+  display: flex;
+  gap: 12px;
+  justify-content: left;
+  object-fit: contain;
+}
+
+.modal__image {
+  object-fit: contain;
+  max-width: 498px;
+  max-height: 498px;
+}
+
+.modal__content_type_image {
+  max-width: 498px;
+  height: 610px;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.modal__content_type_login {
+  height: 100%;
+  max-height: 304px; /* smaller height for login */
+  padding: 28px 28px 36px;
+}
+
+.modal__content_type_signup {
+  height: 100%;
+  max-height: 456px; /* larger height for signup */
+  padding: 28px 28px 36px;
+}
+
+.modal__content_type_editprofile {
+  height: 100%;
+  max-height: 304px; /* larger height for signup */
+  padding: 28px 28px 36px;
+}
+
+.modal__content_type_additem {
+  height: 100%;
+  max-height: 436px; /* larger height for signup */
+  padding: 28px 28px 36px;
 }
 
 .modal__submit.modal__submit_filled {

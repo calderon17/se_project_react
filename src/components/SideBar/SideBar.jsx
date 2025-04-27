@@ -9,13 +9,11 @@ function SideBar() {
   return (
     <div className="sidebar">
       <img
-        src={currentUser.avatar || avatar}
-        alt={currentUser.name}
+        src={currentUser?.avatar || avatar}
+        alt={currentUser?.name}
         className="sidebar__avatar"
       />
-      <p className="sidebar__username">{currentUser.name}</p>
-      {/* <img className="sidebar__avatar" src={avatar} alt="Default avatar" /> */}
-      {/* <p className="sidebar__username">User name</p> */}
+      <p className="sidebar__username">{currentUser?.name || "Loading..."}</p>
     </div>
   );
 }

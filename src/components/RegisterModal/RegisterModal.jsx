@@ -2,7 +2,12 @@ import "./RegisterModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
-export default function RegisterModal({ onClose, isOpen, onRegister }) {
+export default function RegisterModal({
+  onClose,
+  isOpen,
+  onRegister,
+  onSwitchModal,
+}) {
   // State for form fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,10 +63,20 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
     <ModalWithForm
       title="Sign up"
       buttonText="Sign up"
+      modalType="signup"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       isFormValid={isFormValid}
+      switchButton={
+        <button
+          type="button"
+          className="modal__submit-switch"
+          onClick={onSwitchModal}
+        >
+          or Log in
+        </button>
+      }
     >
       {errorMessage && (
         <div className="modal__error-message">{errorMessage}</div>
@@ -73,7 +88,7 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="register-email"
           placeholder="email"
           required
           onChange={handleEmailChange}
@@ -86,8 +101,9 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
           type="password"
           name="password"
           className="modal__input"
-          id="password"
+          id="register-password"
           placeholder="password"
+          autoComplete="username"
           required
           onChange={handlePasswordChange}
           value={password}
@@ -99,7 +115,7 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
           type="text"
           name="name"
           className="modal__input"
-          id="name"
+          id="register-name"
           placeholder="Name"
           required
           onChange={handleNameChange}
@@ -112,7 +128,7 @@ export default function RegisterModal({ onClose, isOpen, onRegister }) {
           type="link"
           name="avatar"
           className="modal__input"
-          id="avatar"
+          id="register-avatar"
           placeholder="avatar"
           onChange={handleAvatarChange}
           value={avatar}

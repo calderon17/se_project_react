@@ -136,6 +136,14 @@ function App() {
       .catch(console.error);
   };
 
+  const handleSwitchModal = () => {
+    if (activeModal === "register") {
+      setActiveModal("login");
+    } else if (activeModal === "login") {
+      setActiveModal("register");
+    }
+  };
+
   // this is the last message
 
   useEffect(() => {
@@ -277,11 +285,13 @@ function App() {
             isOpen={activeModal === "register"}
             onClose={closeActiveModal}
             onRegister={handleRegister}
+            onSwitchModal={handleSwitchModal}
           />
           <LoginModal
             isOpen={activeModal === "login"}
             onClose={closeActiveModal}
             onLogin={handleLogin}
+            onSwitchModal={handleSwitchModal}
           />
         </div>
       </CurrentUserContext.Provider>

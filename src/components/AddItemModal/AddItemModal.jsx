@@ -15,7 +15,7 @@ export default function AddItemModal({
 
   useEffect(() => {
     setIsFormValid(
-      name.length > 0 && imageUrl.length > 0 && weatherType.length > 0
+      name.length > 0 && imageUrl.length > 0 && weather.length > 0
     );
   }, [name, imageUrl, weather]);
 
@@ -55,6 +55,7 @@ export default function AddItemModal({
       isOpen={isOpen}
       onSubmit={handleSubmit}
       isFormValid={isFormValid}
+      modalType="additem"
     >
       <label htmlFor="name" className="modal__label">
         Name{" "}

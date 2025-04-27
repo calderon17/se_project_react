@@ -2,7 +2,12 @@ import "./LoginModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
 
-export default function LoginModal({ onClose, isOpen, onLogin }) {
+export default function LoginModal({
+  onClose,
+  isOpen,
+  onLogin,
+  onSwitchModal,
+}) {
   // State for form fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,10 +46,20 @@ export default function LoginModal({ onClose, isOpen, onLogin }) {
     <ModalWithForm
       title="Log in"
       buttonText="Log in"
+      modalType="login"
       onClose={onClose}
       isOpen={isOpen}
       onSubmit={handleSubmit}
       isFormValid={isFormValid}
+      switchButton={
+        <button
+          type="button"
+          className="modal__submit-switch"
+          onClick={onSwitchModal}
+        >
+          or Sign up
+        </button>
+      }
     >
       {errorMessage && (
         <div className="modal__error-message">{errorMessage}</div>
@@ -55,7 +70,7 @@ export default function LoginModal({ onClose, isOpen, onLogin }) {
           type="email"
           name="email"
           className="modal__input"
-          id="email"
+          id="login-email"
           placeholder="email"
           required
           onChange={handleEmailChange}
@@ -68,8 +83,9 @@ export default function LoginModal({ onClose, isOpen, onLogin }) {
           type="password"
           name="password"
           className="modal__input"
-          id="password"
+          id="login-password"
           placeholder="password"
+          autoComplete="username"
           required
           onChange={handlePasswordChange}
           value={password}

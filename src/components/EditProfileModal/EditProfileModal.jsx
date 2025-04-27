@@ -65,6 +65,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
     <ModalWithForm
       title="Edit Profile"
       buttonText="Edit Profile"
+      modalType="editprofile"
       isOpen={isOpen}
       onSubmit={handleSubmit}
       onClose={onClose}
@@ -78,7 +79,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
           type="text"
           name="name"
           className="modal__input"
-          id="name"
+          id="edit-name"
           placeholder="Name"
           required
           onChange={handleNameChange}
@@ -91,7 +92,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
           type="url"
           name="avatar"
           className="modal__input"
-          id="avatar"
+          id="edit-avatar"
           placeholder="avatar"
           onChange={handleAvatarChange}
           value={avatar}
