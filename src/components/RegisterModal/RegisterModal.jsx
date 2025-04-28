@@ -82,7 +82,7 @@ export default function RegisterModal({
         <div className="modal__error-message">{errorMessage}</div>
       )}
 
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email{" "}
         <input
           type="email"
@@ -95,7 +95,7 @@ export default function RegisterModal({
           value={email}
         />
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password{" "}
         <input
           type="password"
@@ -109,7 +109,7 @@ export default function RegisterModal({
           value={password}
         />
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="register-name" className="modal__label">
         Name{" "}
         <input
           type="text"
@@ -122,7 +122,7 @@ export default function RegisterModal({
           value={name}
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="register-avatar" className="modal__label">
         Avatar{" "}
         <input
           type="link"

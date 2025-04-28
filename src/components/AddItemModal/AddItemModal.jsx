@@ -1,7 +1,7 @@
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import { use, useState } from "react";
-import { useEffect } from "react";
+import { use, useState, useEffect } from "react";
+// import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
 export default function AddItemModal({
   onClose,
@@ -12,6 +12,9 @@ export default function AddItemModal({
   const [imageUrl, setImageUrl] = useState("");
   const [weather, setWeather] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+
+  // const { values, handleChange, errors, isValid, setValues, resetForm } =
+  //   useFormAndValidation();
 
   useEffect(() => {
     setIsFormValid(

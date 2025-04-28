@@ -1,9 +1,7 @@
 const baseUrl = "http://localhost:3001";
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then((res) => {
-    return res.ok ? res.json() : checkResponse(res);
-  });
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
 function handleDeleteCard(id, token) {
@@ -63,12 +61,7 @@ function updateProfile(name, avatar, token) {
       name,
       avatar,
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return checkResponse(res);
-  });
+  }).then(checkResponse);
 }
 
 function checkResponse(res) {

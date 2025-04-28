@@ -23,19 +23,7 @@ import { register, login, checkToken, getToken } from "../../utils/auth.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
-
-const ProtectedRoute = ({ children }) => {
-  const { isLoggedIn, isLoading } = useContext(CurrentUserContext);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!isLoading && !isLoggedIn) {
-      navigate("/");
-    }
-  }, [isLoggedIn, navigate]);
-
-  return children;
-};
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute.jsx";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -183,6 +171,23 @@ function App() {
         .finally(() => setIsLoading(false));
     }
   }, []);
+
+  // esc key
+  useEffect(() => {
+    if (!activeModal) return; // stop if no active modal
+
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]); // dependency array with activeModal
 
   const handleLikeClick = ({ id, isLiked }) => {
     const token = getToken();

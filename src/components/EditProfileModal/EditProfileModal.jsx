@@ -73,7 +73,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
       {errorMessage && (
         <div className="modal__error-message">{errorMessage}</div>
       )}
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="edit-name" className="modal__label">
         Name{" "}
         <input
           type="text"
@@ -86,7 +86,7 @@ export default function EditProfileModal({ onClose, isOpen }) {
           value={name}
         />
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="edit-avatar" className="modal__label">
         Avatar{" "}
         <input
           type="url"

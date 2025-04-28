@@ -1,3 +1,5 @@
+import { checkResponse } from "./api";
+
 const BASE_URL = "http://localhost:3001"; // Replace with your API URL
 
 // Register new user
@@ -8,9 +10,7 @@ export const register = ({ email, password, name, avatar }) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ email, password, name, avatar }),
-  }).then((response) => {
-    return response.ok ? response.json() : Promise.reject(response.status);
-  });
+  }).then(checkResponse);
 };
 
 // Login user
@@ -22,9 +22,7 @@ export const login = ({ email, password }) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => {
-      return response.ok ? response.json() : Promise.reject(response.status);
-    })
+    .then(checkResponse)
     .then((data) => {
       if (data.token) {
         localStorage.setItem("jwt", data.token);
@@ -41,9 +39,7 @@ export const checkToken = (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then((response) => {
-    return response.ok ? response.json() : Promise.reject(response.status);
-  });
+  }).then(checkResponse);
 };
 
 // Get token from local storage
