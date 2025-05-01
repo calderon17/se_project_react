@@ -12,5 +12,9 @@ export const ProtectedRoute = ({ children }) => {
     }
   }, [isLoggedIn, navigate]);
 
-  return children;
+  return (
+    <div className="protected-route">
+      {isLoading ? <div>Loading...</div> : children}
+    </div>
+  );
 };
