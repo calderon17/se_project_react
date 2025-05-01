@@ -23,7 +23,7 @@ import { register, login, checkToken, getToken } from "../../utils/auth.js";
 import CurrentUserContext from "../../contexts/CurrentUserContext.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
-import { ProtectedRoute } from "../../utils/ProtectedRoute.js";
+import { ProtectedRoute } from "../ProtectedRoute/ProtectedRoute.js";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
