@@ -107,7 +107,8 @@ function App() {
         setCurrentUser(userData);
         closeActiveModal();
       })
-      .catch(console.error);
+      .catch(console.error)
+      .finally(() => setIsLoading(false));
   };
 
   const handleLogin = ({ email, password }) => {
@@ -125,7 +126,8 @@ function App() {
       .catch((err) => {
         setLoginError("Incorrect email or password");
         throw new Error("Incorrect email or password");
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const handleSwitchModal = () => {
